@@ -12,7 +12,6 @@ task3初步訓練WER達到約1X% 因此後面主要針對whisper修改
 在驗證集上最後結果約5%
 下面是使用hugging face的code
 
-
 import pandas as pd
 from datasets import Dataset, load_metric
 import torchaudio
@@ -34,6 +33,7 @@ dataset = DatasetDict({
     'train': dataset_train,
     'test': dataset_test
 })
+
 dataset = dataset.map(lambda x: {'audio': f"./nycu-iass-dl2024-taiwanese-asr/train/train/{x['id']}.wav"}, remove_columns=['id'])
 from transformers import WhisperFeatureExtractor
 from transformers import WhisperProcessor
@@ -43,7 +43,7 @@ feature_extractor = WhisperFeatureExtractor.from_pretrained("openai/whisper-smal
 tokenizer = WhisperTokenizer.from_pretrained("openai/whisper-small", language='en', task="transcribe")
 processor = WhisperProcessor.from_pretrained("openai/whisper-small",language='en', task="transcribe")
 
-sampling to 16KHz
+#sampling to 16KHz
 dataset = dataset.cast_column("audio", Audio(sampling_rate=16000))
 
 def prepare_dataset(batch):
