@@ -128,7 +128,7 @@ def compute_metrics(pred):
 from transformers import WhisperForConditionalGeneration
 
 
-#model = WhisperForConditionalGeneration.from_pretrained("openai/whisper-small")
+# model = WhisperForConditionalGeneration.from_pretrained("openai/whisper-small")
 model_path = "./whisper-small-EN/checkpoint-5000"  # checkpoint
 model = WhisperForConditionalGeneration.from_pretrained(model_path)
 
