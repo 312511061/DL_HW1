@@ -127,14 +127,13 @@ def compute_metrics(pred):
     
 from transformers import WhisperForConditionalGeneration
 
-
-# model = WhisperForConditionalGeneration.from_pretrained("openai/whisper-small")
-model_path = "./whisper-small-EN/checkpoint-5000"  # checkpoint
-model = WhisperForConditionalGeneration.from_pretrained(model_path)
+# model setting
+model = WhisperForConditionalGeneration.from_pretrained("openai/whisper-small")
 
 model.config.forced_decoder_ids = None
 model.config.suppress_tokens = []
 
+#  per_device_eval_batch_size=1 否則會出錯(whisper更新強制檢測預輸入語言 台語輸出容易偵測到多種語言導致錯誤)
 training_args = Seq2SeqTrainingArguments(
     #add
     output_dir="./whisper-small-EN",  
@@ -171,6 +170,6 @@ trainer = Seq2SeqTrainer(
     tokenizer=processor.feature_extractor,
 )
 processor.save_pretrained(training_args.output_dir)
-# train---------------------------------------------------------------------
+# train
 trainer.train(resume_from_checkpoint=True)
 #trainer.train()
