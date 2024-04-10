@@ -28,13 +28,17 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 import torch
 
-#read dataset
+--
+read dataset
+--
 df = pd.read_csv('nycu-iass-dl2024-taiwanese-asr/train/train-toneless.csv')
 from datasets import Dataset, Audio
 dataset = Dataset.from_pandas(df)
 from datasets import DatasetDict
 
-#spilt
+--
+spilt
+--
 df_train, df_test = train_test_split(df, test_size=0.2)
 dataset_train = Dataset.from_pandas(df_train)
 dataset_test = Dataset.from_pandas(df_test)
@@ -52,7 +56,9 @@ feature_extractor = WhisperFeatureExtractor.from_pretrained("openai/whisper-smal
 tokenizer = WhisperTokenizer.from_pretrained("openai/whisper-small", language='en', task="transcribe")
 processor = WhisperProcessor.from_pretrained("openai/whisper-small",language='en', task="transcribe")
 
-#sampling to 16KHz
+--
+sampling to 16KHz
+--
 dataset = dataset.cast_column("audio", Audio(sampling_rate=16000))
 
 def prepare_dataset(batch):
