@@ -1,16 +1,25 @@
 DL_HW1
-------------
+-
 task1,2 在colab進行嘗試 使用小模型 
+-
 task1的訓練結果很差
+-
 task2在初步訓練WER約在30%
+-
 而後由於colab算力問題 task3轉用hugging face的方法 在本機端使用anaconda 進行訓練
+-
 task3初步訓練WER達到約1X% 因此後面主要針對whisper修改 
+-
 選用whisper-small
+-
 選擇whisper的語言時首先嘗試使用中文 英文與西班牙文(在whisper doc中 西文對大多數語言的匹配率效果甚好)
+-
 每個語言進行初次訓練(設置check point) 以英文的效果最好 接下去訓練到max_step = 5000
+-
 在驗證集上最後結果約5%
+-
 下面是使用hugging face的code
-----------
+-
 import pandas as pd
 from datasets import Dataset, load_metric
 import torchaudio
