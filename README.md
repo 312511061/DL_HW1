@@ -2,11 +2,8 @@ DL_HW1
 -
 task1,2 在colab進行嘗試 使用小模型 
 -
-task1的訓練結果很差
--
-task2在初步訓練WER約在30%
--
-而後由於colab算力問題 task3轉用hugging face的方法 在本機端使用anaconda 進行訓練
+而後由於colab算力問題訓練都會中斷，
+task3轉用hugging face的方法 在本機端使用anaconda 進行訓練
 -
 task3初步訓練WER達到約1X% 因此後面主要針對whisper修改 
 -
