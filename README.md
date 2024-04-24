@@ -160,7 +160,7 @@ trainer.train(resume_from_checkpoint=True)
 -
 使用NVIDIA GTX1080TI訓練
 原本是打算都使用WSL2在本機端進行訓練 但是會出現預期外的CUDA錯誤(只有ESPnet會出錯) 
-最後task1 2只好改在colab進行嘗試 但是算力吃緊下僅初步觀察結果(task1 WER約60% task2約4X%)
+最後task1 2只好改在colab進行嘗試 但是算力吃緊下僅初步觀察結果(task1 WER約60% task2約50%%)
 由於task3可以使用hugging face 在我的anaconda底下執行 因此主要是使用task3 whisper-small 進行比較多的測試
 後面主要針對whisper修改 
 卡比較久的地方應該是whisper近期更新 會預設選擇一種語言 因此閩南語可能會使得模型偵測到多種語言產生錯誤
